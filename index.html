@@ -542,14 +542,17 @@
             const appsContainer = document.querySelector('.apps-container');
         
             appsContainer.appendChild(addAppIcon('ALLOP', null, null,  '集成多个实验工具的综合性实验平台。'));
-            appsContainer.appendChild(addAppIcon('MTS'));
-            appsContainer.appendChild(addAppIcon('MMTS'));
-            appsContainer.appendChild(addAppIcon('HOPKINSON'));
-            appsContainer.appendChild(addAppIcon('MINIMTS'));
-            appsContainer.appendChild(addAppIcon('HIGHTEMP'));
+            appsContainer.appendChild(addAppIcon('Moons位移台控制', "moons", null,  'Moons位移台的控制软件。'));
+            appsContainer.appendChild(addAppIcon('MINIMTS', null, null,  '集成有视频引伸计以及DIC分析的准静态测试软件。'));
+            appsContainer.appendChild(addAppIcon('MTS', null, null,  'MTS中应变率材料试验机的控制软件。'));
+            appsContainer.appendChild(addAppIcon('MMTS', null, null,  'MMTS材料力学性能测试系统的控制软件。'));
+            appsContainer.appendChild(addAppIcon('HOPKINSON', null, null,  '霍普金森压杆实验系统的控制软件。'));
+            appsContainer.appendChild(addAppIcon('HOPKINSON_Decoder', null, null,  '霍普金森杆实验数据解码软件。'));
+
+            appsContainer.appendChild(addAppIcon('HIGHTEMP', null, null,  '高频加热测试系统的控制软件。'));
             appsContainer.appendChild(addAppIcon('实验室一级气炮控制', 'gasgun', null, '用于控制实验室一级气炮的应用程序。'));
-            appsContainer.appendChild(addAppIcon('ACJMOTOR'));
-            appsContainer.appendChild(addAppIcon('PressMachine'));
+            appsContainer.appendChild(addAppIcon('ACJMOTOR', null, null,  '交流伺服电机控制系统的软件。'));
+            appsContainer.appendChild(addAppIcon('PressMachine', null, null,  '压力机控制系统的软件。'));
 
             // 创建浮动元素
             createFloatingElements();
