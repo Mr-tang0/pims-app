@@ -297,8 +297,33 @@
             if (!response.ok) throw new Error();
             mockData = await response.json();
             renderTable();
+            
+            // --- 新增：初始化时检查 URL 参数 ---
+            checkUrlParams(); 
+            
         } catch (e) {
-            document.getElementById('paramBody').innerHTML = `<tr><td style="text-align:center; color:#ff3b30;">无法加载 params.json，请检查 /history 文件夹。</td></tr>`;
+            document.getElementById('paramBody').innerHTML = `<tr><td style="text-align:center; color:#ff3b30;">无法加载 params.json</td></tr>`;
+        }
+    }
+
+    function checkUrlParams() {
+        // 创建 URLSearchParams 对象
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchId = urlParams.get('search'); // 获取 search 参数的值
+
+        if (searchId) {
+            // 将获取到的 ID 转换为大写以匹配 mockData
+            const targetId = searchId.trim().toUpperCase();
+            
+            // 延迟一小会儿执行，确保页面动画已经开始，视觉效果更平滑
+            setTimeout(() => {
+                const item = mockData.find(d => d.id === targetId);
+                if (item) {
+                    showDetail(targetId);
+                } else {
+                    console.warn('URL 参数中的 ID 未找到:', targetId);
+                }
+            }, 300); 
         }
     }
 
@@ -331,6 +356,9 @@
     }
 
     function showDetail(id) {
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?search=' + id;
+        window.history.pushState({ path: newUrl }, '', newUrl);
+        
         const item = mockData.find(d => d.id === id);
         if(!item) return;
 
